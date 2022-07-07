@@ -64,21 +64,13 @@ for given duration
 
     }
 
-    /**
-     * This method will accept a String as expected value and verify actual URL CONTAINS the value.
-     * @param expectedInURL
-     */
+
     public static void verifyURLContains(String expectedInURL){
         Assert.assertTrue(Driver.getDriver().getCurrentUrl().contains(expectedInURL));
     }
 
 
-    /**
-     * This method will accept a dropdown as a WebElement
-     * and return all the options' text in a List of String.
-     * @param dropdownElement
-     * @return List<String> actualOptionsAsString
-     */
+
     public static List<String> dropdownOptionsAsString(WebElement dropdownElement){
         Select select = new Select(dropdownElement);
 
@@ -97,12 +89,7 @@ for given duration
     }
 
 
-    /**
-     * This method will accept a group radio buttons as a List of WebElement.
-     * It will loop through the List, and click to the radio button with provided attributeValue
-     * @param radioButtons
-     * @param attributeValue
-     */
+
     public static void clickRadioButton(List<WebElement> radioButtons, String attributeValue){
 
         for (WebElement each : radioButtons) {
@@ -113,10 +100,7 @@ for given duration
         }
     }
 
-    /**
-     * Switches to new window by the exact title. Returns to original window if target title not found
-     * @param targetTitle
-     */
+
     public static void switchToWindow(String targetTitle) {
         String origin = Driver.getDriver().getWindowHandle();
         for (String handle : Driver.getDriver().getWindowHandles()) {
@@ -128,22 +112,12 @@ for given duration
         Driver.getDriver().switchTo().window(origin);
     }
 
-    /**
-     * Moves the mouse to given element
-     *
-     * @param element on which to hover
-     */
     public static void hover(WebElement element) {
         Actions actions = new Actions(Driver.getDriver());
         actions.moveToElement(element).perform();
     }
 
-    /**
-     * return a list of string from a list of elements
-     *
-     * @param list of webelements
-     * @return list of string
-     */
+
     public static List<String> getElementsText(List<WebElement> list) {
         List<String> elemTexts = new ArrayList<>();
         for (WebElement el : list) {
@@ -152,12 +126,7 @@ for given duration
         return elemTexts;
     }
 
-    /**
-     * Extracts text from list of elements matching the provided locator into new List<String>
-     *
-     * @param locator
-     * @return list of strings
-     */
+
     public static List<String> getElementsText(By locator) {
 
         List<WebElement> elems = Driver.getDriver().findElements(locator);
@@ -169,11 +138,7 @@ for given duration
         return elemTexts;
     }
 
-    /**
-     * Performs a pause
-     *
-     * @param seconds
-     */
+
     public static void waitFor(int seconds) {
         try {
             Thread.sleep(seconds * 1000);
@@ -182,59 +147,31 @@ for given duration
         }
     }
 
-    /**
-     * Waits for the provided element to be visible on the page
-     *
-     * @param element
-     * @param timeToWaitInSec
-     * @return
-     */
+
     public static WebElement waitForVisibility(WebElement element, int timeToWaitInSec) {
         WebDriverWait wait = new WebDriverWait(Driver.getDriver(), timeToWaitInSec);
         return wait.until(ExpectedConditions.visibilityOf(element));
     }
 
-    /**
-     * Waits for element matching the locator to be visible on the page
-     *
-     * @param locator
-     * @param timeout
-     * @return
-     */
+
     public static WebElement waitForVisibility(By locator, int timeout) {
         WebDriverWait wait = new WebDriverWait(Driver.getDriver(), timeout);
         return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
     }
 
-    /**
-     * Waits for provided element to be clickable
-     *
-     * @param element
-     * @param timeout
-     * @return
-     */
+
     public static WebElement waitForClickablility(WebElement element, int timeout) {
         WebDriverWait wait = new WebDriverWait(Driver.getDriver(), timeout);
         return wait.until(ExpectedConditions.elementToBeClickable(element));
     }
 
-    /**
-     * Waits for element matching the locator to be clickable
-     *
-     * @param locator
-     * @param timeout
-     * @return
-     */
+
     public static WebElement waitForClickablility(By locator, int timeout) {
         WebDriverWait wait = new WebDriverWait(Driver.getDriver(), timeout);
         return wait.until(ExpectedConditions.elementToBeClickable(locator));
     }
 
-    /**
-     * waits for backgrounds processes on the browser to complete
-     *
-     * @param timeOutInSeconds
-     */
+
     public static void waitForPageToLoad(long timeOutInSeconds) {
         ExpectedCondition<Boolean> expectation = new ExpectedCondition<Boolean>() {
             public Boolean apply(WebDriver driver) {
@@ -249,12 +186,7 @@ for given duration
         }
     }
 
-    /**
-     * Verifies whether the element matching the provided locator is displayed on page
-     *
-     * @param by
-     * @throws AssertionError if the element matching the provided locator is not found or not displayed
-     */
+
     public static void verifyElementDisplayed(By by) {
         try {
             Assert.assertTrue("Element not visible: " + by, Driver.getDriver().findElement(by).isDisplayed());
@@ -265,12 +197,7 @@ for given duration
         }
     }
 
-    /**
-     * Verifies whether the element matching the provided locator is NOT displayed on page
-     *
-     * @param by
-     * @throws AssertionError the element matching the provided locator is displayed
-     */
+
     public static void verifyElementNotDisplayed(By by) {
         try {
             Assert.assertFalse("Element should not be visible: " + by, Driver.getDriver().findElement(by).isDisplayed());

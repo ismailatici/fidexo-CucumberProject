@@ -1,14 +1,17 @@
 package com.fidexo.step_definitions;
 
 import com.fidexo.Pages.FidexoLoginPage;
+import com.fidexo.Pages.FidexoLogoutPage;
 import com.fidexo.utilities.Driver;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.junit.Assert;
 
 public class DemoStepdefinitions {
     FidexoLoginPage fidexoLoginPage=new FidexoLoginPage();
+    FidexoLogoutPage fidexoLogoutPage=new FidexoLogoutPage();
 
 
     @Given("user is on the login page")
@@ -98,4 +101,36 @@ public class DemoStepdefinitions {
     }
 
 
+    @And("user is clicks on the username")
+    public void userIsClicksOnTheUsername() {
+        fidexoLogoutPage.userProfilename.click();
+
+    }
+
+    @When("user enters the logout button")
+    public void userEntersTheLogoutButton() {
+        fidexoLogoutPage.logoutButton.click();
+
+    }
+
+    @Then("user see text at the top of the page {string}")
+    public void userSeeTextAtTheTopOfThePage(String expectedText) {
+        String actualText = fidexoLogoutPage.loginText.getText();
+        System.out.println(actualText);
+
+        Assert.assertEquals(expectedText, actualText);
+
+    }
+
+    @Then("user clicks the step back button")
+    public void userClicksTheStepBackButton() {
+        Driver.getDriver().navigate().back();
+
+    }
+
+    @Then("user see error message{string}")
+    public void userSeeErrorMessage(String errorMessage) {
+        Assert.assertEquals(errorMessage, fidexoLogoutPage.stepBackWarning.getText());
+
+    }
 }

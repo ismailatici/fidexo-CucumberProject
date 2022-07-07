@@ -21,6 +21,9 @@ public class FidexoLoginPage {
     @FindBy(xpath ="//*[@id=\"wrapwrap\"]/main/div/form/div[3]/a")
     public WebElement resetPassword;
 
+
+
+
    /* @FindBy(css = "#login")
     public WebElement errorMessageOnlyPassword;
 
