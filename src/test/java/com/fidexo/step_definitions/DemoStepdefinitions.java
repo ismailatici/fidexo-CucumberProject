@@ -2,12 +2,16 @@ package com.fidexo.step_definitions;
 
 import com.fidexo.Pages.FidexoLoginPage;
 import com.fidexo.Pages.FidexoLogoutPage;
+import com.fidexo.utilities.BrowserUtils;
 import com.fidexo.utilities.Driver;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.joda.time.Seconds;
 import org.junit.Assert;
+
+import java.util.concurrent.TimeUnit;
 
 public class DemoStepdefinitions {
     FidexoLoginPage fidexoLoginPage=new FidexoLoginPage();
@@ -16,7 +20,7 @@ public class DemoStepdefinitions {
 
     @Given("user is on the login page")
     public void user_is_on_the_login_page() {
-        Driver.getDriver().get("https://qa.fidexio.com");
+        Driver.getDriver().get("https://app.fidexio.com/");
 
 
 
@@ -38,11 +42,13 @@ public class DemoStepdefinitions {
     @Then("user see the error message")
     public void userSeeTheErrorMessage() {
         System.out.println("user see the error message");
+        //Assert.assertEquals(errorMessage, fidexoLoginPage.stepBackWarning.getText());
     }
 
     @Then("user see the message")
     public void userSeeTheMessage() {
         System.out.println("user see the message");
+        //Assert.assertEquals(errorMessage, fidexoLoginPage.stepBackWarning.getText());
     }
 
     @When("user clicks the reset password button")
@@ -101,22 +107,25 @@ public class DemoStepdefinitions {
     }
 
 
-    @And("user is clicks on the username")
+    @And("user is clicks on the userprofile")
     public void userIsClicksOnTheUsername() {
-        fidexoLogoutPage.userProfilename.click();
+        fidexoLogoutPage.userProfile.click();
+        BrowserUtils.sleep(3);
+
 
     }
 
     @When("user enters the logout button")
     public void userEntersTheLogoutButton() {
         fidexoLogoutPage.logoutButton.click();
+        BrowserUtils.sleep(3);
 
     }
 
     @Then("user see text at the top of the page {string}")
     public void userSeeTextAtTheTopOfThePage(String expectedText) {
+        BrowserUtils.sleep(3);
         String actualText = fidexoLogoutPage.loginText.getText();
-        System.out.println(actualText);
 
         Assert.assertEquals(expectedText, actualText);
 
@@ -125,12 +134,17 @@ public class DemoStepdefinitions {
     @Then("user clicks the step back button")
     public void userClicksTheStepBackButton() {
         Driver.getDriver().navigate().back();
+        BrowserUtils.sleep(4);
+
 
     }
 
     @Then("user see error message{string}")
-    public void userSeeErrorMessage(String errorMessage) {
-        Assert.assertEquals(errorMessage, fidexoLogoutPage.stepBackWarning.getText());
+    public void userSeeErrorMessage(String expectedName) {
+
+        String actualName=fidexoLogoutPage.stepBackWarning.getText();
+        Assert.assertEquals(expectedName,actualName);
+
 
     }
 }

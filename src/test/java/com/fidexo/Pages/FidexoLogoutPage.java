@@ -12,20 +12,21 @@ public class FidexoLogoutPage {
     public FidexoLogoutPage(){
         PageFactory.initElements(Driver.getDriver(),this);}
 
-    @FindBy(xpath ="(//ul[@class='dropdown-menu'])[2]/li[6]/a")
+    @FindBy(xpath ="//*[@id=\"oe_main_menu_navbar\"]/div[2]/ul[2]/li/ul/li[6]/a")
     public WebElement logoutButton;
 
-    @FindBy(xpath ="//span[@class='oe_topbar_name']")
-    public WebElement userProfilename;
+    @FindBy(xpath ="//*[@id=\"oe_main_menu_navbar\"]/div[2]/ul[2]/li/a/span")
+    public WebElement userProfile;
 
-    @FindBy(xpath = "//p[@class='alert alert-danger']")
-    public WebElement errorMessage;
+    @FindBy(xpath = "//*[@id=\"modal_2\"]/div/div/div[2]")
+    public WebElement arizaMessage;
 
-    @FindBy(css = "a.navbar-brand")
+    @FindBy(xpath = "//*[@id=\"wrapwrap\"]/header/div/div/div[1]/a")
     public WebElement loginText;
 
-    @FindBy(xpath = "//div[@class='o_dialog_warning modal-body']")
+    @FindBy(xpath = "//*[@id=\"modal_2\"]/div/div/div[2]")
     public WebElement stepBackWarning;
+
 
 
 

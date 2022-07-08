@@ -7,9 +7,9 @@ Feature: Default
 		Given user is on the login page
 		And user enters valid the "<username>" and password "<password>"
 		And user clicks the Log in Button
-		And user is clicks on the username 
+		And user is clicks on the userprofile
 		When user enters the logout button
-		Then user see text at the top of the page "Best solution for startup"
+		Then user see text at the top of the page "Best solution for startups"
 		
 		    Examples:
 		      | username                |  | password     |
@@ -22,9 +22,9 @@ Feature: Default
 		Given user is on the login page
 		And user enters valid the "<username>" and password "<password>"
 		And user clicks the Log in Button
-		And user is clicks on the username
+		And user is clicks on the userprofile
 		When user enters the logout button
-		Then user see text at the top of the page "Best solution for startup"
+		Then user see text at the top of the page "Best solution for startups"
 		    Examples:
 		      | username              |  | password     |
 		      | posmanager43@info.com |  | posmanager |
@@ -37,10 +37,10 @@ Feature: Default
 		And user enters valid the "<username>" and password "<password>"
 		And user clicks the Log in Button
 		And user is on the homepage
-		And user is clicks on the username
+		And user is clicks on the userprofile
 		When user enters the logout button
 		Then user clicks the step back button
-		Then user see error message"Your Odoo session expired.Please refresh the current web page"
+		Then user see error message"Your Odoo session expired. Please refresh the current web page."
 		
 		    Examples:
 		      | username                |  | password     |
@@ -54,10 +54,10 @@ Feature: Default
 		And user enters valid the "<username>" and password "<password>"
 		And user clicks the Log in Button
 		And user is on the homepage
-		And user is clicks on the username
+		And user is clicks on the userprofile
 		When user enters the logout button
 		Then user clicks the step back button
-		Then user see error message"Your Odoo session expired.Please refresh the current web page"
+		Then user see error message"Your Odoo session expired. Please refresh the current web page."
 
 		Examples:
 			| username                |  | password     |
